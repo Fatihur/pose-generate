@@ -1,0 +1,5 @@
+{
+  "name": "AI Pose & Expression Generator",
+  "description": "An application that uses AI to generate new images of a person with a specified body pose and facial expression based on an uploaded photo.",
+  "requestFramePermissions": []
+}
