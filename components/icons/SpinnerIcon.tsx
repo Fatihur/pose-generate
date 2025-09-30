@@ -1,12 +1,13 @@
-
 import React from 'react';
 
 export const SpinnerIcon: React.FC<{ className?: string }> = ({ className = "w-5 h-5 mr-3" }) => (
   <svg
-    className={`${className} animate-spin text-white`}
+    className={`${className} animate-spin`}
     xmlns="http://www.w3.org/2000/svg"
     fill="none"
     viewBox="0 0 24 24"
+    role="status"
+    aria-hidden="true"
   >
     <circle
       className="opacity-25"

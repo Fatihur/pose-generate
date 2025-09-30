@@ -1,4 +1,3 @@
-
 import React, { useRef, useCallback } from 'react';
 import { UploadIcon } from './icons/UploadIcon';
 
@@ -41,18 +40,25 @@ const ImageUploader: React.FC<ImageUploaderProps> = ({ onFileSelect, previewUrl 
         className="hidden"
       />
       <label
-        className={`flex justify-center items-center w-full h-48 border-2 border-dashed rounded-lg cursor-pointer transition-colors duration-200
-          ${previewUrl ? 'border-indigo-500' : 'border-gray-600 hover:border-indigo-500 bg-gray-700 hover:bg-gray-600'}`}
+        className={`flex justify-center items-center w-full h-48 rounded-lg cursor-pointer transition-all duration-300 ease-in-out overflow-hidden
+          ${previewUrl 
+            ? 'border-2 border-solid border-indigo-500 shadow-md' 
+            : 'border-2 border-dashed border-gray-300 hover:border-indigo-400 bg-gray-50 hover:bg-indigo-50'
+          }`}
         onDragOver={handleDragOver}
         onDrop={handleDrop}
         onClick={() => fileInputRef.current?.click()}
       >
         {previewUrl ? (
-          <img src={previewUrl} alt="Preview" className="h-full w-full object-cover rounded-lg" />
+          <img 
+            src={previewUrl} 
+            alt="Preview" 
+            className="h-full w-full object-cover transition-transform duration-300 ease-in-out transform scale-[1.03] hover:scale-110" 
+          />
         ) : (
-          <div className="text-center text-gray-400">
+          <div className="text-center text-gray-500">
             <UploadIcon />
-            <p className="mt-2">Drag & drop an image, or click to select</p>
+            <p className="mt-2 text-sm">Drag & drop an image, or click to select</p>
           </div>
         )}
       </label>

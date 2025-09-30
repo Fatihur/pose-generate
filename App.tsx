@@ -1,4 +1,3 @@
-
 import React, { useState, useCallback } from 'react';
 import { GoogleGenAI, Modality } from '@google/genai';
 import { POSES, EXPRESSIONS } from './constants';
@@ -101,27 +100,27 @@ const App: React.FC = () => {
   const isGenerateButtonDisabled = !uploadedFile || !selectedPose || !selectedExpression || isLoading;
 
   return (
-    <div className="min-h-screen bg-gray-900 text-white font-sans">
+    <div className="min-h-screen bg-gray-50 text-gray-900 font-sans">
       <main className="container mx-auto px-4 py-8 md:py-12">
         <header className="text-center mb-10">
-          <h1 className="text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-indigo-600">
+          <h1 className="text-4xl md:text-5xl font-bold text-gray-800">
             AI Pose & Expression Generator
           </h1>
-          <p className="text-lg text-gray-400 mt-2">
+          <p className="text-lg text-gray-500 mt-2">
             Transform your photos with new poses and expressions instantly.
           </p>
         </header>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
           {/* Controls Section */}
-          <div className="bg-gray-800 p-6 rounded-2xl shadow-lg flex flex-col space-y-6">
+          <div className="bg-white p-8 rounded-xl border border-gray-200 shadow-sm flex flex-col space-y-8">
             <div>
-              <h2 className="text-2xl font-semibold mb-3 text-indigo-400">1. Upload Your Photo</h2>
+              <h2 className="text-xl font-semibold mb-4 text-gray-700">1. Upload Photo</h2>
               <ImageUploader onFileSelect={handleFileSelect} previewUrl={previewUrl} />
             </div>
 
             <div>
-              <h2 className="text-2xl font-semibold mb-3 text-indigo-400">2. Select a Pose</h2>
+              <h2 className="text-xl font-semibold mb-4 text-gray-700">2. Select a Pose</h2>
               <OptionSelector 
                 options={POSES}
                 selectedOption={selectedPose}
@@ -130,7 +129,7 @@ const App: React.FC = () => {
             </div>
 
             <div>
-              <h2 className="text-2xl font-semibold mb-3 text-indigo-400">3. Select an Expression</h2>
+              <h2 className="text-xl font-semibold mb-4 text-gray-700">3. Select an Expression</h2>
               <OptionSelector 
                 options={EXPRESSIONS}
                 selectedOption={selectedExpression}
@@ -141,19 +140,19 @@ const App: React.FC = () => {
             <button
               onClick={handleGenerate}
               disabled={isGenerateButtonDisabled}
-              className={`w-full flex items-center justify-center py-3 px-6 text-lg font-bold rounded-lg transition-all duration-300 ease-in-out
+              className={`w-full flex items-center justify-center py-3 px-6 text-lg font-semibold rounded-lg transition-all duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500
                 ${isGenerateButtonDisabled 
-                  ? 'bg-gray-600 text-gray-400 cursor-not-allowed' 
-                  : 'bg-indigo-600 hover:bg-indigo-700 text-white shadow-lg transform hover:scale-105'
+                  ? 'bg-gray-200 text-gray-500 cursor-not-allowed' 
+                  : 'bg-indigo-600 hover:bg-indigo-700 text-white shadow-md transform hover:-translate-y-1'
                 }`}
             >
-              {isLoading && <SpinnerIcon />}
+              {isLoading && <SpinnerIcon className="w-5 h-5 mr-3 text-white" />}
               {isLoading ? 'Generating...' : 'Generate Image'}
             </button>
           </div>
 
           {/* Result Section */}
-          <div className="bg-gray-800 p-6 rounded-2xl shadow-lg flex flex-col items-center justify-center min-h-[400px] lg:min-h-full">
+          <div className="bg-white p-8 rounded-xl border border-gray-200 shadow-sm flex flex-col items-center justify-center min-h-[400px] lg:min-h-full">
             <GeneratedImage
               generatedImage={generatedImage}
               isLoading={isLoading}
@@ -162,7 +161,7 @@ const App: React.FC = () => {
           </div>
         </div>
 
-        <footer className="text-center mt-12 text-gray-500">
+        <footer className="text-center mt-12 text-gray-400">
             <p>Powered by Google Gemini</p>
         </footer>
       </main>
